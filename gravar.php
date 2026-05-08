@@ -1,25 +1,35 @@
 <html>
-    <head>
-        <title>inserção no banco</title>
-    </head>
-    <body>
-        <?php
-        include "mysqlconecta.php";
-        $nome = $_POST["nome"];
-        $telefone = $_POST["telefone"];
-        $cpf = $_POST["Cpf"];
+<head>
+    <title>Inserção no banco</title>
+</head>
+<body>
 
-        echo $nome;
-        echo "<br>";
-        echo $telefone;
-        echo "<br>";
-        echo $cpf;
+<?php
+include "mysqlconecta.php";
 
-        $query = msqli_query($query,"insert into cliente (nome,telefone,cpf)value($nome,$telefone,$cpf)");
-        echo "<br> gravado!";
+$nome = $_POST['nome'];
+$telefone = $_POST['telefone'];
+$cpf = $_POST['cpf'];
 
-        mysqli_close($conexao);
-        ?>
-        <p><a href="menu.php">voltar</a></p>
-    </body>
+echo $nome;
+echo "<br>";
+echo $telefone;
+echo "<br>";
+echo $cpf;
+$query = mysqli_query(
+    $conexao,
+    "INSERT INTO cliente (nome, telefone, cpf)VALUES ('$nome', '$telefone', '$cpf')");
+
+if ($query) {
+    echo "<br> Gravado!";
+} else {
+    echo "<br> Erro ao gravar!";
+}
+
+mysqli_close($conexao);
+?>
+
+<p><a href="menu.php">voltar</a></p>
+
+</body>
 </html>

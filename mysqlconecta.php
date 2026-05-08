@@ -1,9 +1,10 @@
 <?php
-$servidor="localhost";
+$servidor = "localhost";
 $usuario = "root";
 $senha = "";
-$localhost = "senai";
+$bancodedados = "senai";
 
-$conexao= mysqliconnect($servidor,$usuario,$senha,$localhost,$bancodedados) 
-or die ("Problema para conectar no banco,verifique os dados");
+$conexao = mysqli_connect( $servidor,$usuario,$senha,$bancodedados) or die("Problema para conectar no banco, verifique os dados");
+
+echo "Conectado com sucesso!";
 ?>
